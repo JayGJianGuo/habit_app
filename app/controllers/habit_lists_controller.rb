@@ -11,7 +11,14 @@ class HabitListsController < ApplicationController
   # GET /habit_lists/1.json
   def show
     @habit_list = HabitList.find(params[:id])
-    @record_days = @habit_list.record_days.order("day_num DESC")
+    @record_days = @habit_list.record_days
+
+    @record_days = case params[:order]
+      when 'reverse'
+        @record_days.order("day_num DESC").reverse
+      else
+        @record_days.order("day_num DESC")
+      end
   end
 
   # GET /habit_lists/new

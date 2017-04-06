@@ -45,7 +45,7 @@ class RecordDaysController < ApplicationController
   end
 
   def record_day_params
-    params.require(:record_day).permit(:day_num, :record_content)
+    params.require(:record_day).permit(:day_num, :keyword, :record_content)
   end
 
 end

@@ -1,6 +1,9 @@
 <%= simple_form_for [@habit_list, @record_day] do |f| %>
   <div class="day-input">
-    <%= f.input :day_num, label: "Day_Num" %>
+    <%= f.input :day_num, label: "天数" %>
+  </div>
+  <div class="keyword">
+    <%= f.input :keyword, label: "关键词" %>
   </div>
   <div class="record-content">
     <%= f.input :record_content, label: "今日记录" %>

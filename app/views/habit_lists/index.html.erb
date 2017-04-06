@@ -22,9 +22,9 @@
           <td><%= habit_list.habit_type %></td>
           <td><%= habit_list.created_at.to_s(:long) %></td>
           <td>
-            <div class="btn-group">
-              <%= link_to 'Edit', edit_habit_list_path(habit_list), class: "btn btn-primary" %>
-              <%= link_to 'Destroy', habit_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            <div class="btn-group fa">
+              <%= link_to '', edit_habit_list_path(habit_list), class: "fa-pencil-square-o btn btn-primary" %>
+              <%= link_to '', habit_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa-trash btn btn-danger" %>
             </div>
           </td>
         </tr>

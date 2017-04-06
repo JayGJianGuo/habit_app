@@ -17,9 +17,9 @@
 
 
 
-    <div class="btn-group pull-right">
-      <%= link_to 'Edit', edit_habit_list_path(@habit_list), class: "btn btn-primary" %>
-      <%= link_to 'Back', habit_lists_path, class: "btn btn-default" %>
+    <div class="btn-group pull-right fa">
+      <%= link_to '', edit_habit_list_path(@habit_list), class: "fa-pencil-square-o btn btn-primary" %>
+      <%= link_to '', habit_lists_path, class: "btn btn-default fa-backward" %>
     </div>
   </div>
 
@@ -51,9 +51,9 @@
               <td>Day <%= record_day.day_num %></td>
               <td><%= record_day.keyword %></td>
               <td>
-                <div class="btn-group">
-                  <%= link_to "Edit", edit_habit_list_record_day_path(@habit_list, record_day), class: "btn btn-xs btn-default"%>
-                  <%= link_to "Delete", habit_list_record_day_path(@habit_list, record_day), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?" } %>
+                <div class="btn-group fa">
+                  <%= link_to "", edit_habit_list_record_day_path(@habit_list, record_day), class: "fa-pencil-square-o btn btn-default"%>
+                  <%= link_to "", habit_list_record_day_path(@habit_list, record_day), method: :delete, class: "fa-trash btn btn-danger", data: { confirm: "Are you sure?" } %>
                 </div>
               </td>
             </tr>

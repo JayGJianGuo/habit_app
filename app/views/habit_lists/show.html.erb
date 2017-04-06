@@ -35,7 +35,7 @@
           <% @habit_list.record_days.each do |record_day| %>
             <tr>
               <td><%= record_day.id %></td>
-              <td>Day <%= record_day.day_num %></td>
+              <td><%= record_day.day_num %></td>
               <td><%= record_day.record_content %></td>
               <td>
                 <%= link_to "Edit", edit_habit_list_record_day_path(@habit_list, record_day), class: "btn btn-xs btn-default"%>

@@ -1,6 +1,6 @@
 class RecordDaysController < ApplicationController
   before_action :set_habit_list
-  before_action :find_record_day, except: [:new, :create ]
+  before_action :find_record_day, except: [:new, :create]
 
   def new
     @record_day = RecordDay.new

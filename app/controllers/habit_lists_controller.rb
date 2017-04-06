@@ -10,6 +10,8 @@ class HabitListsController < ApplicationController
   # GET /habit_lists/1
   # GET /habit_lists/1.json
   def show
+    @habit_list = HabitList.find(params[:id])
+    @record_days = @habit_list.record_days.order("day_num DESC")
   end
 
   # GET /habit_lists/new

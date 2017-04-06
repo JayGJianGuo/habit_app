@@ -1,31 +1,38 @@
 <p id="notice"><%= notice %></p>
-
+<div class="container">
 <h1>Habit Lists</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Habit type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @habit_lists.each do |habit_list| %>
+<hr>
+<div class="row col-md-12">
+  <table class="table table-bordered text-center">
+    <thead>
       <tr>
-        <td><%= habit_list.title %></td>
-        <td><%= habit_list.description %></td>
-        <td><%= habit_list.habit_type %></td>
-        <td><%= link_to 'Show', habit_list %></td>
-        <td><%= link_to 'Edit', edit_habit_list_path(habit_list) %></td>
-        <td><%= link_to 'Destroy', habit_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Habit type</th>
+        <th>Start Time</th>
+        <th>Option</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @habit_lists.each do |habit_list| %>
+        <tr>
+          <td><%= link_to habit_list.title, habit_list_path(habit_list) %></td>
+          <td><%= habit_list.description %></td>
+          <td><%= habit_list.habit_type %></td>
+          <td><%= habit_list.created_at.to_s(:long) %></td>
+          <td>
+            <div class="btn-group">
+              <%= link_to 'Edit', edit_habit_list_path(habit_list), class: "btn btn-primary" %>
+              <%= link_to 'Destroy', habit_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
-<%= link_to 'New Habit List', new_habit_list_path %>
+<%= link_to 'New Habit List', new_habit_list_path, class: "btn btn-default" %>
+</div>

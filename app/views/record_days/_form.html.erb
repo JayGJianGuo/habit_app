@@ -1,0 +1,9 @@
+<%= simple_form_for [@habit_list, @record_day] do |f| %>
+  <div class="day-input">
+    <%= f.input :day_num, label: "Day_Num" %>
+  </div>
+  <div class="record-content">
+    <%= f.input :record_content, label: "今日记录" %>
+  </div>
+  <%= f.submit "Submit", data: { disable_with: "上传中……" }, class: "btn btn-primary"  %>
+<% end %>

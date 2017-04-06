@@ -1,19 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @habit_list.title %>
-</p>
+<div class="container">
+  <div class="row">
+    <h2>Goal: <%= @habit_list.title %></h2>
+    <h5><%= @habit_list.description %></h5>
+    <br>
+    <label class="label label-success label-lg"><%= @habit_list.habit_type %></label>
 
-<p>
-  <strong>Description:</strong>
-  <%= @habit_list.description %>
-</p>
+    <div class="btn-group pull-right">
+      <%= link_to 'Edit', edit_habit_list_path(@habit_list), class: "btn btn-primary" %>
+      <%= link_to 'Back', habit_lists_path, class: "btn btn-default" %>
+    </div>
+  </div>
 
-<p>
-  <strong>Habit type:</strong>
-  <%= @habit_list.habit_type %>
-</p>
-
-<%= link_to 'Edit', edit_habit_list_path(@habit_list) %> |
-<%= link_to 'Back', habit_lists_path %>
+<hr>
+  <div class="row">
+  <h3 class="text-center">Day Record</h3>
+  <br>
+    <div class="row">
+      <%= link_to "New Day Record", new_habit_list_record_day_path(@habit_list), class: "btn btn-success pull-right" %>
+    </div>
+    <br>
+    <div class="row">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Day Num</th>
+            <th>Record</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @habit_list.record_days.each do |record_day| %>
+            <tr>
+              <td><%= record_day.id %></td>
+              <td>Day <%= record_day.day_num %></td>
+              <td><%= record_day.record_content %></td>
+              <td>
+                <%= link_to "Edit", edit_habit_list_record_day_path(@habit_list, record_day), class: "btn btn-xs btn-default"%>
+                <%= link_to "Delete", habit_list_record_day_path(@habit_list, record_day), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,9 @@
-<h1>Editing Habit List</h1>
+<div class="container">
+  <h1>Editing Habit List</h1>
 
-<%= render 'form', habit_list: @habit_list %>
-
-<%= link_to 'Show', @habit_list %> |
-<%= link_to 'Back', habit_lists_path %>
+  <%= render 'form', habit_list: @habit_list %>
+  <div class="btn-group pull-right">
+    <%= link_to 'Show', @habit_list, class: "btn btn-warning" %>
+    <%= link_to 'Back', habit_lists_path, class: "btn btn-default" %>
+  </div>
+</div>

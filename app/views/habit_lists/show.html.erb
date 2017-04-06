@@ -1,48 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container">
+<div class="container col-xs-12">
   <div class="row">
-    <h2>Goal: <%= @habit_list.title %></h2>
-    <h5><%= @habit_list.description %></h5>
+    <div class="col-md-12 col-xs-12">
+      <h2>Goal: <%= @habit_list.title %></h2>
+      <h5><%= @habit_list.description %></h5>
+    </div>
+
     <br>
+    <div class="row col-md-12 col-xs-12">
+      <div class="pull-left">
+        <% if @habit_list.habit_type == "Behavior Habit" %>
+          <label class="label label-success label-lg">Behavior Habit</label>
+        <% elsif @habit_list.habit_type == "Body Habit" %>
+          <label class="label label-warning label-lg">Body Habit</label>
+        <% else %>
+          <label class="label label-info label-lg">Thinking Habit</label>
+        <% end %>
+      </div>
 
-      <% if @habit_list.habit_type == "Behavior Habit" %>
-        <label class="label label-success label-lg">Behavior Habit</label>
-      <% elsif @habit_list.habit_type == "Body Habit" %>
-        <label class="label label-warning label-lg">Body Habit</label>
-      <% else %>
-        <label class="label label-info label-lg">Thinking Habit</label>
-      <% end %>
-
-
-
-
-    <div class="btn-group pull-right fa">
-      <%= link_to '', edit_habit_list_path(@habit_list), class: "fa-pencil-square-o btn btn-primary" %>
-      <%= link_to '', habit_lists_path, class: "btn btn-default fa-backward" %>
+      <div class="btn-group pull-right fa">
+        <%= link_to '', edit_habit_list_path(@habit_list), class: "fa-pencil-square-o btn btn-primary" %>
+        <%= link_to '', habit_lists_path, class: "btn btn-default fa-backward" %>
+      </div>
     </div>
   </div>
 
 <hr>
 
-  <div class="row">
+  <div class="row col-md-12 col-xs-12">
   <h3 class="text-center">每日记录</h3>
   <br>
-    <div class="row">
+    <div class="row col-md-12 col-xs-12">
       <div class="btn-group pull-right">
         <%= link_to("正序", habit_list_path(:order => "reverse"), class: "btn btn-info") %>
         <%= link_to("倒序", habit_list_path, class: "btn btn-default") %>
         <%= link_to "添加记录", new_habit_list_record_day_path(@habit_list), class: "btn btn-success" %>
       </div>
     </div>
-    <br>
-    <div class="row">
+    <br><br>
+    <div class="row col-md-12 col-xs-12">
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
-            <th>天数</th>
-            <th>当日关键词</th>
-            <th>操作</th>
+            <th class="col-md-3 col-xs-3">天数</th>
+            <th class="col-md-3 col-xs-3">当日关键词</th>
+            <th class="col-md-3 col-xs-3">操作</th>
           </tr>
         </thead>
         <tbody>
@@ -51,7 +54,7 @@
               <td>Day <%= record_day.day_num %></td>
               <td><%= record_day.keyword %></td>
               <td>
-                <div class="btn-group fa">
+                <div class="fa">
                   <%= link_to "", edit_habit_list_record_day_path(@habit_list, record_day), class: "fa-pencil-square-o btn btn-default"%>
                   <%= link_to "", habit_list_record_day_path(@habit_list, record_day), method: :delete, class: "fa-trash btn btn-danger", data: { confirm: "Are you sure?" } %>
                 </div>

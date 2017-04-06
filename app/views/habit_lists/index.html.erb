@@ -2,15 +2,15 @@
 <div class="container">
 <h1>Habit Lists</h1>
 <hr>
-<div class="row col-md-12">
+<div class="row col-md-12 col-xs-12">
   <table class="table table-bordered text-center">
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Habit type</th>
-        <th>Start Time</th>
-        <th>Option</th>
+        <th class="col-xs-2">Title</th>
+        <th class="col-xs-2">Description</th>
+        <th class="col-xs-3">Habit type</th>
+        <th class="col-xs-3">Start Time</th>
+        <th class="col-xs-2">Option</th>
       </tr>
     </thead>
 
@@ -22,7 +22,7 @@
           <td><%= habit_list.habit_type %></td>
           <td><%= habit_list.created_at.to_s(:long) %></td>
           <td>
-            <div class="btn-group fa">
+            <div class="fa">
               <%= link_to '', edit_habit_list_path(habit_list), class: "fa-pencil-square-o btn btn-primary" %>
               <%= link_to '', habit_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa-trash btn btn-danger" %>
             </div>

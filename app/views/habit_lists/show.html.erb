@@ -5,6 +5,7 @@
     <div class="col-md-12 col-xs-12">
       <h2>Goal: <%= @habit_list.title %></h2>
       <h5><%= @habit_list.description %></h5>
+      <p class="pull-right"><%= @habit_list.created_at.to_s(:long) %></p>
     </div>
 
     <br>
@@ -20,8 +21,8 @@
       </div>
 
       <div class="btn-group pull-right fa">
-        <%= link_to '', edit_habit_list_path(@habit_list), class: "fa-pencil-square-o btn btn-primary" %>
-        <%= link_to '', habit_lists_path, class: "btn btn-default fa-backward" %>
+        <%= link_to '', edit_habit_list_path(@habit_list), class: "fa-pencil-square-o btn btn-lg btn-primary" %>
+        <%= link_to '', habit_lists_path, class: "btn btn-default btn-lg fa-home" %>
       </div>
     </div>
   </div>
@@ -40,19 +41,42 @@
     </div>
     <br><br>
     <div class="row col-md-12 col-xs-12">
-      <table class="table table-bordered table-hover">
+      <table class="table table-bordered table-hover text-center">
         <thead>
           <tr>
+            <th class="col-md-1 col-xs-1">check</th>
             <th class="col-md-3 col-xs-3">天数</th>
-            <th class="col-md-3 col-xs-3">当日关键词</th>
+            <th class="col-md-2 col-xs-2">当日关键词</th>
+            <th class="col-md-3 col-xs-3">完成时间</th>
             <th class="col-md-3 col-xs-3">操作</th>
           </tr>
         </thead>
         <tbody>
           <% @record_days.each do |record_day| %>
             <tr>
-              <td>Day <%= record_day.day_num %></td>
+              <td>
+                <% if record_day.complete? %>
+                    <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-on btn btn-success"%>
+              </td>
+              <td>
+                <strike>
+                  Day <%= record_day.day_num %>
+                </strike>
+                <% else %>
+                  <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-off btn btn-warning"%>
+              </td>
+              <td>
+                Day <%= record_day.day_num %>
+                <% end %>
+              </td>
               <td><%= record_day.keyword %></td>
+              <td>
+                <% if record_day.complete? %>
+                  <%= record_day.complete_at.to_s(:long) %>
+                <% else %>
+                  未完成
+                <% end %>
+              </td>
               <td>
                 <div class="fa">
                   <%= link_to "", edit_habit_list_record_day_path(@habit_list, record_day), class: "fa-pencil-square-o btn btn-default"%>

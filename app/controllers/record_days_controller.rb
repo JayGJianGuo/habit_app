@@ -34,6 +34,11 @@ class RecordDaysController < ApplicationController
     redirect_to @habit_list
   end
 
+  def complete
+    @record_day.update_attribute(:complete_at, Time.now)
+    redirect_to @habit_list, notice: "Today record completed."
+  end
+
   private
 
   def set_habit_list

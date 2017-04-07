@@ -2,36 +2,27 @@
 <div class="container">
 <h1>Habit Lists</h1>
 <hr>
-<div class="row col-md-12 col-xs-12">
-  <table class="table table-bordered text-center">
-    <thead>
-      <tr>
-        <th class="col-xs-2">Title</th>
-        <th class="col-xs-2">Description</th>
-        <th class="col-xs-3">Habit type</th>
-        <th class="col-xs-3">Start Time</th>
-        <th class="col-xs-2">Option</th>
-      </tr>
-    </thead>
-
-    <tbody>
       <% @habit_lists.each do |habit_list| %>
-        <tr>
-          <td><%= link_to habit_list.title, habit_list_path(habit_list) %></td>
-          <td><%= habit_list.description %></td>
-          <td><%= habit_list.habit_type %></td>
-          <td><%= habit_list.created_at.to_s(:long) %></td>
-          <td>
-            <div class="fa">
-              <%= link_to '', edit_habit_list_path(habit_list), class: "fa-pencil-square-o btn btn-primary" %>
-              <%= link_to '', habit_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa-trash btn btn-danger" %>
-            </div>
-          </td>
-        </tr>
+        <div class="row col-md-12 col-xs-12">
+          <h2 class="habit_list_title text-center">
+            <%= link_to habit_list.title, habit_list_path(habit_list) %>
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-xs-6">
+            <%= habit_list.description %>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <% if habit_list.habit_type == "Behavior Habit" %>
+              <label class="label label-success label-lg">Behavior Habit</label>
+            <% elsif habit_list.habit_type == "Body Habit" %>
+              <label class="label label-warning label-lg">Body Habit</label>
+            <% else %>
+              <label class="label label-info label-lg">Thinking Habit</label>
+            <% end %>          </div>
+        </div>
+        <hr>
       <% end %>
-    </tbody>
-  </table>
-</div>
 <br>
 
 <%= link_to 'New Habit List', new_habit_list_path, class: "btn btn-default" %>

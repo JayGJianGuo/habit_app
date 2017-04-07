@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406115050) do
+ActiveRecord::Schema.define(version: 20170407065001) do
 
   create_table "habit_lists", force: :cascade do |t|
     t.string   "title"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170406115050) do
     t.datetime "updated_at",     null: false
     t.integer  "habit_list_id"
     t.string   "keyword"
+    t.datetime "complete_at"
   end
 
 end

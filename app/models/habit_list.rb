@@ -1,5 +1,6 @@
 class HabitList < ApplicationRecord
   has_many :record_days
+  has_many :habit_periods
 
   validates :title, presence: true
   validates :description, presence: true

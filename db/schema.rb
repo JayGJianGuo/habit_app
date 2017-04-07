@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407065001) do
+ActiveRecord::Schema.define(version: 20170407075250) do
 
   create_table "habit_lists", force: :cascade do |t|
     t.string   "title"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 20170407065001) do
     t.string   "habit_type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "habit_periods", force: :cascade do |t|
+    t.string   "period_type"
+    t.integer  "period_time"
+    t.text     "period_method"
+    t.integer  "habit_list_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "record_days", force: :cascade do |t|

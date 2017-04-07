@@ -41,52 +41,9 @@
     </div>
     <br><br>
     <div class="row col-md-12 col-xs-12">
-      <table class="table table-bordered table-hover text-center">
-        <thead>
-          <tr>
-            <th class="col-md-1 col-xs-1">check</th>
-            <th class="col-md-3 col-xs-3">天数</th>
-            <th class="col-md-2 col-xs-2">当日关键词</th>
-            <th class="col-md-3 col-xs-3">完成时间</th>
-            <th class="col-md-3 col-xs-3">操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @record_days.each do |record_day| %>
-            <tr>
-              <td>
-                <% if record_day.complete? %>
-                    <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-on btn btn-success"%>
-              </td>
-              <td>
-                <strike>
-                  Day <%= record_day.day_num %>
-                </strike>
-                <% else %>
-                  <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-off btn btn-warning"%>
-              </td>
-              <td>
-                Day <%= record_day.day_num %>
-                <% end %>
-              </td>
-              <td><%= record_day.keyword %></td>
-              <td>
-                <% if record_day.complete? %>
-                  <%= record_day.complete_at.to_s(:long) %>
-                <% else %>
-                  未完成
-                <% end %>
-              </td>
-              <td>
-                <div class="fa">
-                  <%= link_to "", edit_habit_list_record_day_path(@habit_list, record_day), class: "fa-pencil-square-o btn btn-default"%>
-                  <%= link_to "", habit_list_record_day_path(@habit_list, record_day), method: :delete, class: "fa-trash btn btn-danger", data: { confirm: "Are you sure?" } %>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+
+          <%= render "record_days/record_day" %>
+
     </div>
   </div>
 </div>

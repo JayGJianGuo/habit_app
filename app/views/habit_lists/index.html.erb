@@ -12,7 +12,18 @@
           <div class="col-md-6 col-xs-6">
             <%= habit_list.description %>
           </div>
-             
+          <div class="col-md-6 col-xs-6">
+            <div class="habit_list_category">
+              <% c = habit_list.category_id %>
+              <% if c == 1 %>
+                <label class="label label-lg label-success"><%= habit_list.category.name %></label>
+              <% elsif c == 2 %>
+                <label class="label label-lg label-info"><%= habit_list.category.name %></label>
+              <% else %>
+                <label class="label label-lg label-danger"><%= habit_list.category.name %></label>
+              <% end %>
+            </div>
+          </div>
         </div>
         <hr>
       <% end %>

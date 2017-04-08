@@ -1,20 +1,21 @@
 <hr>
 <%= simple_form_for(habit_list) do |f| %>
   <div class="title">
-    <%= f.input :title %>
+    <%= f.input :title, label: "习惯名称" %>
   </div>
 
   <div class="description">
-    <%= f.input :description %>
+    <%= f.input :description, label: "你想要实现什么？" %>
   </div>
 
-  <%= f.input :category_id do %>
-      <%= f.select :category_id, Category.all.map{|c| [c.name,c.id]}, :prompt => "Select" %>
+  <%= f.input :category_id, label: "习惯类型" do %>
+      <br>
+      <%= f.select :category_id, Category.all.map{|c| [c.name,c.id]}, :prompt => "选择类型" %>
   <% end %>
 
   <br>
   <div class="actions">
-    <%= f.submit "Submit", class: "btn btn-primary"%>
+    <%= f.submit "提交", data: { disable_with: "上传中……" }, class: "btn btn-primary"%>
   </div>
 <% end %>
 <hr>

@@ -41,7 +41,7 @@ class HabitListsController < ApplicationController
     @category_id = params[:category_id]
 
       if @habit_list.save
-        redirect_to @habit_list, notice: 'Habit list was successfully created.'
+        redirect_to @habit_list
       else
         render :new
       end
@@ -51,7 +51,7 @@ class HabitListsController < ApplicationController
   # PATCH/PUT /habit_lists/1.json
   def update
       if @habit_list.update(habit_list_params)
-        redirect_to @habit_list, notice: 'Habit list was successfully updated.'
+        redirect_to @habit_list
       else
         render :edit
       end
@@ -61,7 +61,7 @@ class HabitListsController < ApplicationController
   # DELETE /habit_lists/1.json
   def destroy
     @habit_list.destroy
-    redirect_to habit_lists_url, notice: 'Habit list was successfully destroyed.'
+    redirect_to habit_lists_path
 
   end
 

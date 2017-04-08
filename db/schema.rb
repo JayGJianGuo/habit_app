@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407075250) do
+ActiveRecord::Schema.define(version: 20170408125916) do
 
   create_table "habit_lists", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "habit_type"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "habit_type_id"
   end
 
   create_table "habit_periods", force: :cascade do |t|
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 20170407075250) do
     t.integer  "habit_list_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "habit_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "record_days", force: :cascade do |t|

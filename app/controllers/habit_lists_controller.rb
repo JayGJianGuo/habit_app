@@ -26,6 +26,8 @@ class HabitListsController < ApplicationController
   # GET /habit_lists/new
   def new
     @habit_list = HabitList.new
+    #habit_type 添加
+    @habit_types = HabitType.all.map { |c| [c.name, c.id] }
   end
 
   # GET /habit_lists/1/edit
@@ -36,6 +38,8 @@ class HabitListsController < ApplicationController
   # POST /habit_lists.json
   def create
     @habit_list = HabitList.new(habit_list_params)
+
+    @habit_list.habit_type_id = params[:habit_type_id]
 
     respond_to do |format|
       if @habit_list.save
@@ -80,6 +84,6 @@ class HabitListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def habit_list_params
-      params.require(:habit_list).permit(:title, :description, :habit_type)
+      params.require(:habit_list).permit(:title, :description, :habit_type_id)
     end
 end

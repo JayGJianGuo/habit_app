@@ -8,5 +8,6 @@
   <div class="record-content">
     <%= f.input :record_content, label: "今日记录" %>
   </div>
+  <% @record_day.complete_at == nil %>
   <%= f.submit "Submit", data: { disable_with: "上传中……" }, class: "btn btn-primary"  %>
 <% end %>

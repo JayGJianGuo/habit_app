@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+    <%= link_to("New Period", new_habit_list_habit_period_path(@habit_list), class: "btn btn-success pull-right") %>
+  </div>
+</div>
+
+<% @habit_periods.each do |habit_period| %>
+  <label class="label label-warning"><%= habit_period.period_type %></label>
+  <%= habit_period.period_time %>
+  <%= habit_period.period_method %>
+  <br><br>
+<% end %>

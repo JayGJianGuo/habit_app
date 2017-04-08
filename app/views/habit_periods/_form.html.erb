@@ -1,8 +1,6 @@
-<% simple_form_for @habit_periods do |f| %>
-  <div class="group">
+<%= simple_form_for [@habit_list, @habit_period] do |f| %>
     <%= f.input :period_type, label: "Period Name" %>
     <%= f.input :period_time, label: "Period Time" %>
     <%= f.input :period_method, label: "Method" %>
-    <%= f.submit "提交", disable_with: { "上传中……" } %>
-  </div>
+    <%= f.submit "Submit", data: { disable_with: "上传中……" }, class: "btn btn-primary"  %>
 <% end %>

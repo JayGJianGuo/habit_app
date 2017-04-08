@@ -19,6 +19,8 @@ class HabitListsController < ApplicationController
       else
         @record_days.order("day_num DESC")
       end
+
+    @habit_periods = @habit_list.habit_periods
   end
 
   # GET /habit_lists/new

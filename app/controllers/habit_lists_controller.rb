@@ -26,6 +26,7 @@ class HabitListsController < ApplicationController
   # GET /habit_lists/new
   def new
     @habit_list = HabitList.new
+    @categories = Category.all
   end
 
   # GET /habit_lists/1/edit
@@ -37,39 +38,31 @@ class HabitListsController < ApplicationController
   def create
     @habit_list = HabitList.new(habit_list_params)
 
-    respond_to do |format|
+    @category_id = params[:category_id]
+
       if @habit_list.save
-        format.html { redirect_to @habit_list, notice: 'Habit list was successfully created.' }
-        format.json { render :show, status: :created, location: @habit_list }
+        redirect_to @habit_list, notice: 'Habit list was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @habit_list.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /habit_lists/1
   # PATCH/PUT /habit_lists/1.json
   def update
-    respond_to do |format|
       if @habit_list.update(habit_list_params)
-        format.html { redirect_to @habit_list, notice: 'Habit list was successfully updated.' }
-        format.json { render :show, status: :ok, location: @habit_list }
+        redirect_to @habit_list, notice: 'Habit list was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @habit_list.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
   # DELETE /habit_lists/1
   # DELETE /habit_lists/1.json
   def destroy
     @habit_list.destroy
-    respond_to do |format|
-      format.html { redirect_to habit_lists_url, notice: 'Habit list was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to habit_lists_url, notice: 'Habit list was successfully destroyed.'
+
   end
 
   private
@@ -80,6 +73,6 @@ class HabitListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def habit_list_params
-      params.require(:habit_list).permit(:title, :description, :habit_type)
+      params.require(:habit_list).permit(:title, :description, :category_id)
     end
 end

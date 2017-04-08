@@ -8,13 +8,10 @@
     <%= f.input :description %>
   </div>
 
-  <div class="habit_type">
-    <%= f.select :habit_type do %>
-      <option value="Behavior Habit">Behavior Habit</option>
-      <option value="Body Habit">Body Habit</option>
-      <option value="Thinking Habit">Thinking Habit</option>
-    <% end %>
-  </div>
+  <%= f.input :category_id do %>
+      <%= f.select :category_id, Category.all.map{|c| [c.name,c.id]}, :prompt => "Select" %>
+  <% end %>
+
   <br>
   <div class="actions">
     <%= f.submit "Submit", class: "btn btn-primary"%>

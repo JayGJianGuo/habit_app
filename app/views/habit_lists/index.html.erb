@@ -12,15 +12,7 @@
           <div class="col-md-6 col-xs-6">
             <%= habit_list.description %>
           </div>
-          <div class="col-md-6 col-xs-6">
-            <% if habit_list.habit_type == "Behavior Habit" %>
-              <label class="label label-success label-lg">Behavior Habit</label>
-            <% elsif habit_list.habit_type == "Body Habit" %>
-              <label class="label label-warning label-lg">Body Habit</label>
-            <% else %>
-              <label class="label label-info label-lg">Thinking Habit</label>
-            <% end %>
-          </div>
+             
         </div>
         <hr>
       <% end %>

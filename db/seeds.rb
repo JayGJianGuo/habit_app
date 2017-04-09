@@ -10,3 +10,8 @@
 Category.create(name: "行为习惯");
 Category.create(name: "身体习惯");
 Category.create(name: "思维习惯");
+
+PeriodType.create(name: "反抗期");
+PeriodType.create(name: "不稳定期");
+PeriodType.create(name: "稳定期");
+PeriodType.create(name: "倦怠期");

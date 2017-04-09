@@ -4,6 +4,7 @@ class HabitPeriodsController < ApplicationController
 
   def new
     @habit_period = HabitPeriod.new
+    @period_types = PeriodType.all.map { |c| [c.name, c.id] }
   end
 
   def create

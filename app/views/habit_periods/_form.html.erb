@@ -1,5 +1,7 @@
 <%= simple_form_for [@habit_list, @habit_period] do |f| %>
-    <%= f.input :period_type, label: "Period Name" %>
+
+    <%= select_tag(:period_type_id, options_for_select(@period_types), :prompt => "时期") %>
+
     <%= f.input :period_time, label: "Period Time" %>
     <%= f.input :period_method, label: "Method" %>
     <%= f.submit "Submit", data: { disable_with: "上传中……" }, class: "btn btn-primary"  %>

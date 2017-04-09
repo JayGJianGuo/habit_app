@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :habit_lists do
     resources :record_days do
       member do

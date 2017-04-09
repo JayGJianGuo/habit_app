@@ -5,6 +5,7 @@ class HabitListsController < ApplicationController
   # GET /habit_lists.json
   def index
     @habit_lists = HabitList.all
+    flash[:notice] = "Welcome Back!"
   end
 
   # GET /habit_lists/1
@@ -45,6 +46,7 @@ class HabitListsController < ApplicationController
       else
         render :new
       end
+      flash[:notice] = "Create succeed"
   end
 
   # PATCH/PUT /habit_lists/1

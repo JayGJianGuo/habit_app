@@ -4,7 +4,7 @@ class HabitPeriodsController < ApplicationController
 
   def new
     @habit_period = HabitPeriod.new
-    @period_types = PeriodType.all.map { |c| [c.name, c.id] }
+    @period_types = PeriodType.all
   end
 
   def create
@@ -12,10 +12,16 @@ class HabitPeriodsController < ApplicationController
     @habit_period = HabitPeriod.new(habit_period_params)
     @habit_period.habit_list_id = @habit_list.id
 
-    if @habit_period.save
-      redirect_to @habit_list
+    @period_type_id = params[:period_type_id]
+
+    if @habit_list.habit_periods.count < 5
+      if @habit_period.save
+        redirect_to @habit_list
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to @habit_list
     end
   end
 
@@ -41,6 +47,6 @@ class HabitPeriodsController < ApplicationController
   end
 
   def habit_period_params
-    params.require(:habit_period).permit(:period_type, :period_time, :period_method)
+    params.require(:habit_period).permit(:period_type_id, :period_time, :period_method)
   end
 end

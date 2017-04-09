@@ -5,7 +5,20 @@
 </div>
 
 <% @habit_periods.each do |habit_period| %>
-  <label class="label label-warning">""</label>
+
+  <div class="period_types">
+    <% c = habit_period.period_type.id %>
+    <% if c == 1 %>
+      <label class="label label-lg label-danger"><%= habit_period.period_type.name %></label>
+    <% elsif c == 2 %>
+      <label class="label label-lg label-warning"><%= habit_period.period_type.name %></label>
+    <% elsif c == 3 %>
+      <label class="label label-lg label-info"><%= habit_period.period_type.name %></label>
+    <% else %>
+      <label class="label label-lg label-success"><%= habit_period.period_type.name %></label>
+    <% end %>
+  </div>
+
   <%= habit_period.period_time %>
   <%= habit_period.period_method %>
   <br><br>

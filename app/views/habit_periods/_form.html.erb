@@ -1,8 +1,12 @@
 <%= simple_form_for [@habit_list, @habit_period] do |f| %>
 
-    <%= select_tag(:period_type_id, options_for_select(@period_types), :prompt => "时期") %>
-
     <%= f.input :period_time, label: "Period Time" %>
     <%= f.input :period_method, label: "Method" %>
+    <% @habit_period.habit_list_id = @habit_list.id %>
+    <%= f.input :period_type_id, label: "习惯时期" do %>
+        <br>
+        <%= f.select :period_type_id, PeriodType.all.map{|c| [c.name,c.id]}, :prompt => "选择类型" %>
+    <% end %>
+
     <%= f.submit "Submit", data: { disable_with: "上传中……" }, class: "btn btn-primary"  %>
 <% end %>

@@ -1,8 +1,9 @@
-<div class="container">
-<h1>新建 习惯养成</h1>
+<h1 class="habit_list_title">新建 习惯养成</h1>
 
 <%= render 'form', habit_list: @habit_list %>
 
-
-<%= link_to '回到主页', habit_lists_path, class: "btn btn-default pull-right"%>
+<div class="col-md-12 col-xs-12">
+  <div class="btn-group pull-right">
+    <%= link_to '回到主页', habit_lists_path, class: "btn btn-default pull-right"%>
+  </div>
 </div>

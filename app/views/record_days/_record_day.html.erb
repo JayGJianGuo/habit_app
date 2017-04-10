@@ -1,63 +1,65 @@
-<div class="row col-md-12 col-xs-12">
-<h3 class="text-center">每日记录</h3>
-<br>
-  <div class="row col-md-12 col-xs-12">
-    <div class="btn-group pull-right">
-      <%= link_to("正序", habit_list_path(:order => "reverse"), class: "btn btn-info") %>
-      <%= link_to("倒序", habit_list_path, class: "btn btn-default") %>
-      <%= link_to("添加记录", new_habit_list_record_day_path(@habit_list), class: "btn btn-success") %>
+  <div class="record_days">
+    <div class="col-md-12 col-xs-12">
+      <div class="col-md-12 col-xs-12"><hr></div>
+        <h1 class="habit_list_title text-center">每日记录</h1>
+        <br>
+      <div class="col-md-12 col-xs-12">
+        <div class="btn-group pull-right">
+          <%= link_to("正序", habit_list_path(:order => "reverse"), class: "btn btn-info") %>
+          <%= link_to("倒序", habit_list_path, class: "btn btn-default") %>
+          <%= link_to("添加记录", new_habit_list_record_day_path(@habit_list), class: "btn btn-success") %>
+        </div>
+      </div>
+        <br><br>
+      <div class="col-md-12 col-xs-12">
+
+        <table class="table table-hover text-center">
+          <thead class="text-center">
+            <tr>
+              <th class="col-md-1 col-xs-1 fa fa-check text-center"></th>
+              <th class="col-md-3 col-xs-3 text-center">天数</th>
+              <th class="col-md-2 col-xs-2 text-center">关键词</th>
+              <th class="col-md-3 col-xs-3 text-center">完成时间</th>
+              <th class="col-md-3 col-xs-3 text-center">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @record_days.each do |record_day| %>
+              <tr>
+                <td>
+                  <% if record_day.complete? %>
+                      <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-on btn btn-success"%>
+                </td>
+                <td>
+                  <strike>
+                    Day <%= record_day.day_num %>
+                  </strike>
+                  <% else %>
+                    <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-off btn btn-warning"%>
+                </td>
+                <td>
+                  Day <%= record_day.day_num %>
+                  <% end %>
+                </td>
+                <td><%= record_day.keyword %></td>
+                <td>
+                  <% if record_day.complete? %>
+                    <%= record_day.complete_at.to_s(:long) %>
+                  <% else %>
+                    未完成
+                  <% end %>
+                </td>
+                <td>
+                  <div class="fa">
+                    <%= link_to "", edit_habit_list_record_day_path(@habit_list, record_day), class: "fa-pencil-square-o btn btn-default"%>
+                    <%= link_to "", habit_list_record_day_path(@habit_list, record_day), method: :delete, class: "fa-trash btn btn-danger", data: { confirm: "你确认删除这条记录吗?" } %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-  <br><br>
-  <div class="row col-md-12 col-xs-12">
-
-    <table class="table table-hover text-center">
-      <thead class="text-center">
-        <tr>
-          <th class="col-md-1 col-xs-1 fa fa-check"></th>
-          <th class="col-md-3 col-xs-3">天数</th>
-          <th class="col-md-2 col-xs-2">关键词</th>
-          <th class="col-md-3 col-xs-3">完成时间</th>
-          <th class="col-md-3 col-xs-3">操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @record_days.each do |record_day| %>
-          <tr>
-            <td>
-              <% if record_day.complete? %>
-                  <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-on btn btn-success"%>
-            </td>
-            <td>
-              <strike>
-                Day <%= record_day.day_num %>
-              </strike>
-              <% else %>
-                <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-off btn btn-warning"%>
-            </td>
-            <td>
-              Day <%= record_day.day_num %>
-              <% end %>
-            </td>
-            <td><%= record_day.keyword %></td>
-            <td>
-              <% if record_day.complete? %>
-                <%= record_day.complete_at.to_s(:long) %>
-              <% else %>
-                未完成
-              <% end %>
-            </td>
-            <td>
-              <div class="fa">
-                <%= link_to "", edit_habit_list_record_day_path(@habit_list, record_day), class: "fa-pencil-square-o btn btn-default"%>
-                <%= link_to "", habit_list_record_day_path(@habit_list, record_day), method: :delete, class: "fa-trash btn btn-danger", data: { confirm: "你确认删除这条记录吗?" } %>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-  </div>
-</div>
 </div>

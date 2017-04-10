@@ -1,22 +1,11 @@
 <div class="container col-xs-12">
   <div class="row">
     <div class="col-md-12 col-xs-12 text-center">
-      <div class="list-title">
+      <div class="habit_list_title">
         <h2><%= @habit_list.title %></h2>
       </div>
 
-      <div class="col-md-6 col-xs-6">
-        <h5><%= simple_format(@habit_list.description) %></h5>
-      </div>
-      <div class="col-md-6 col-xs-6">
-        <p><%= @habit_list.created_at.to_s(:long) %></p>
-      </div>
-    </div>
-
-    <br>
-    <div class="row">
-
-      <div class="col-md-8 col-xs-8 habit_list_category text-center">
+      <div class="col-md-4 col-xs-4 habit_list_category text-center">
         <% c = @habit_list.category_id %>
         <% if c == 1 %>
           <label class="label label-lg label-success"><%= @habit_list.category.name %></label>
@@ -27,17 +16,26 @@
         <% end %>
       </div>
 
-      <div class="col-md-4 col-xs-4 btn-group fa pull-right">
-        <%= link_to '', edit_habit_list_path(@habit_list), class: "fa-pencil-square-o btn btn-info" %>
-        <%= link_to '', habit_lists_path, class: "btn btn-default fa-home" %>
+      <div class="col-md-4 col-xs-4">
+        <h5><%= simple_format(@habit_list.description) %></h5>
       </div>
 
+      <div class="col-md-4 col-xs-4">
+        <p>创建于 | <%= @habit_list.created_at.to_s(:long) %> |</p>
+      </div>
     </div>
+
+    <br>
   </div>
-<hr>
-
+  <br>
     <%= render "habit_periods/habit_period" %>
-
-<hr>
-
     <%= render "record_days/record_day" %>
+
+    <div class="col-md-12 col-xs-12 fa">
+      <br>
+      <%= link_to '编辑该习惯养成', edit_habit_list_path(@habit_list), class: "fa-pencil-square-o btn btn-info" %>
+
+      <%= link_to '删除该习惯养成', habit_lists_path, class: "btn btn-default fa-home", data: { confirm: "你确认删除“#{@habit_list.title}”吗?" } %>
+
+      <%= link_to "回到首页", habit_lists_path, class: "btn btn-default pull-right" %>
+    </div>

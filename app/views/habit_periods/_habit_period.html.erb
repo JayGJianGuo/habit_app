@@ -1,22 +1,21 @@
-<div class="row">
-  <%= link_to("习惯时期", habit_list_habit_periods_path(@habit_list), class: "btn btn-default pull-right") %>
-</div>
-<br>
-<div class="row">
+<div class="col-md-12 col-xs-12">
   <div class="count-day col-md-2 col-xs-2">
-    <button class="btn btn-default" style="width= 100%;">坚持了<%= @habit_list.record_days.count %>天</button>
+    <button class="btn btn-default" style="width= 100%;">坚持了 <%= link_to @habit_list.record_days.count, habit_list_habit_periods_path(@habit_list) %> 天</button>
   </div>
 
   <div class="period-show col-md-10 col-xs-10">
       <% t = 0 %>
       <% d = 0 %>
       <% d = @habit_list.record_days.count %>
+      <% if d < 1 %>
+        <%= link_to "添加习惯养成时期", new_habit_list_habit_period_path(@habit_list), class: "btn btn-info pull-right", style: "width: 100%" %>
+      <% end %>
      <% @habit_periods.each do |habit_period| %>
        <% t += habit_period.period_time %>
        <% t %>
 
        <% if d < t+1 %>
-         <%= link_to habit_period.period_type.name, "", class: "btn btn-danger", style: "width: 100%" %>
+         <%= link_to habit_period.period_type.name, habit_list_habit_periods_path(@habit_list), class: "btn btn-danger", style: "width: 100%" %>
          <% break %>
        <% end %>
      <% end %>

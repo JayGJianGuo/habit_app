@@ -1,7 +1,11 @@
 class HabitPeriodsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_habit_list
-  before_action :find_habit_period, except: [:new, :create]
+  before_action :find_habit_period, except: [:new, :create, :index]
+
+  def index
+    @habit_periods = HabitPeriod.all.order("period_type_id DESC").reverse
+  end
 
   def new
     @habit_period = HabitPeriod.new

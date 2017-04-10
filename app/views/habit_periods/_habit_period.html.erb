@@ -1,25 +1,24 @@
 <div class="row">
-  <div class="col-md-12 col-xs-12">
-    <%= link_to("New Period", new_habit_list_habit_period_path(@habit_list), class: "btn btn-success pull-right") %>
+  <%= link_to("习惯时期", habit_list_habit_periods_path(@habit_list), class: "btn btn-default pull-right") %>
+</div>
+<br>
+<div class="row">
+  <div class="count-day col-md-2 col-xs-2">
+    <button class="btn btn-default" style="width= 100%;">坚持了<%= @habit_list.record_days.count %>天</button>
+  </div>
+
+  <div class="period-show col-md-10 col-xs-10">
+      <% t = 0 %>
+      <% d = 0 %>
+      <% d = @habit_list.record_days.count %>
+     <% @habit_periods.each do |habit_period| %>
+       <% t += habit_period.period_time %>
+       <% t %>
+
+       <% if d < t+1 %>
+         <%= link_to habit_period.period_type.name, "", class: "btn btn-danger", style: "width: 100%" %>
+         <% break %>
+       <% end %>
+     <% end %>
   </div>
 </div>
-
-<% @habit_periods.each do |habit_period| %>
-
-  <div class="period_types">
-    <% c = habit_period.period_type.id %>
-    <% if c == 1 %>
-      <label class="label label-lg label-danger"><%= habit_period.period_type.name %></label>
-    <% elsif c == 2 %>
-      <label class="label label-lg label-warning"><%= habit_period.period_type.name %></label>
-    <% elsif c == 3 %>
-      <label class="label label-lg label-info"><%= habit_period.period_type.name %></label>
-    <% else %>
-      <label class="label label-lg label-success"><%= habit_period.period_type.name %></label>
-    <% end %>
-  </div>
-
-  <%= habit_period.period_time %>
-  <%= habit_period.period_method %>
-  <br><br>
-<% end %>

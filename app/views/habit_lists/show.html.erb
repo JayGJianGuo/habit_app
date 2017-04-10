@@ -1,15 +1,22 @@
 <div class="container col-xs-12">
   <div class="row">
-    <div class="col-md-12 col-xs-12">
-      <h2>Goal: <%= @habit_list.title %></h2>
-      <h5><%= @habit_list.description %></h5>
-      <p class="pull-right"><%= @habit_list.created_at.to_s(:long) %></p>
+    <div class="col-md-12 col-xs-12 text-center">
+      <div class="list-title">
+        <h2><%= @habit_list.title %></h2>
+      </div>
+
+      <div class="col-md-6 col-xs-6">
+        <h5><%= simple_format(@habit_list.description) %></h5>
+      </div>
+      <div class="col-md-6 col-xs-6">
+        <p><%= @habit_list.created_at.to_s(:long) %></p>
+      </div>
     </div>
 
     <br>
-    <div class="row col-md-12 col-xs-12">
+    <div class="row">
 
-      <div class="habit_list_category">
+      <div class="col-md-8 col-xs-8 habit_list_category text-center">
         <% c = @habit_list.category_id %>
         <% if c == 1 %>
           <label class="label label-lg label-success"><%= @habit_list.category.name %></label>
@@ -20,10 +27,11 @@
         <% end %>
       </div>
 
-      <div class="btn-group pull-right fa">
-        <%= link_to '', edit_habit_list_path(@habit_list), class: "fa-pencil-square-o btn btn-lg btn-info" %>
-        <%= link_to '', habit_lists_path, class: "btn btn-default btn-lg fa-home" %>
+      <div class="col-md-4 col-xs-4 btn-group fa pull-right">
+        <%= link_to '', edit_habit_list_path(@habit_list), class: "fa-pencil-square-o btn btn-info" %>
+        <%= link_to '', habit_lists_path, class: "btn btn-default fa-home" %>
       </div>
+
     </div>
   </div>
 <hr>

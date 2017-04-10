@@ -1,32 +1,35 @@
 <div class="container">
-<h1>Habit Lists</h1>
-<hr>
-      <% @habit_lists.each do |habit_list| %>
-        <div class="row col-md-12 col-xs-12">
-          <h2 class="habit_list_title text-center">
-            <%= link_to habit_list.title, habit_list_path(habit_list) %>
-          </h2>
+  <h1>习惯清单</h1>
+  <hr>
+    <% @habit_lists.each do |habit_list| %>
+      <div class="row col-md-12 col-xs-12">
+        <h2 class="habit_list_title text-center">
+          <%= link_to habit_list.title, habit_list_path(habit_list) %>
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-xs-12 text-center">
+          <h5><%= habit_list.description %></h5>
         </div>
-        <div class="row">
-          <div class="col-md-6 col-xs-6">
-            <%= habit_list.description %>
-          </div>
-          <div class="col-md-6 col-xs-6">
-            <div class="habit_list_category">
-              <% c = habit_list.category_id %>
-              <% if c == 1 %>
-                <label class="label label-lg label-success"><%= habit_list.category.name %></label>
-              <% elsif c == 2 %>
-                <label class="label label-lg label-info"><%= habit_list.category.name %></label>
-              <% else %>
-                <label class="label label-lg label-danger"><%= habit_list.category.name %></label>
-              <% end %>
-            </div>
+        <div class="col-md-6 col-xs-12 text-center">
+          <div class="habit_list_category">
+            <% c = habit_list.category_id %>
+            <% if c == 1 %>
+              <label class="label label-lg label-success"><%= habit_list.category.name %></label>
+            <% elsif c == 2 %>
+              <label class="label label-lg label-info"><%= habit_list.category.name %></label>
+            <% else %>
+              <label class="label label-lg label-danger"><%= habit_list.category.name %></label>
+            <% end %>
           </div>
         </div>
-        <hr>
-      <% end %>
-<br>
-
-<%= link_to 'New Habit List', new_habit_list_path, class: "btn btn-default" %>
+      </div>
+      <hr>
+    <% end %>
+  <br>
+    <div class="row">
+      <div class="last-button">
+        <%= link_to '养成一个新习惯', new_habit_list_path, class: "btn btn-success pull-right" %>
+      </div>
+    </div>
 </div>

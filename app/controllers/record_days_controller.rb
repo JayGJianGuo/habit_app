@@ -1,4 +1,5 @@
 class RecordDaysController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_habit_list
   before_action :find_record_day, except: [:new, :create]
 

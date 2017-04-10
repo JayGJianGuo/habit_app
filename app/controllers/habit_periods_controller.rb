@@ -1,4 +1,5 @@
 class HabitPeriodsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_habit_list
   before_action :find_habit_period, except: [:new, :create]
 

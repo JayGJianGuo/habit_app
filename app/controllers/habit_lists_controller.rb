@@ -6,7 +6,7 @@ class HabitListsController < ApplicationController
   # GET /habit_lists.json
   def index
     @habit_lists = HabitList.all
-    flash[:notice] = "Welcome Back!"
+    flash[:notice] = "欢迎回来!"
   end
 
   # GET /habit_lists/1
@@ -44,10 +44,10 @@ class HabitListsController < ApplicationController
 
       if @habit_list.save
         redirect_to @habit_list
+        flash[:notice] = "创建成功"
       else
         render :new
       end
-      flash[:notice] = "Create succeed"
   end
 
   # PATCH/PUT /habit_lists/1
@@ -55,6 +55,7 @@ class HabitListsController < ApplicationController
   def update
       if @habit_list.update(habit_list_params)
         redirect_to @habit_list
+        flash[:notice] = "修改已上传"
       else
         render :edit
       end
@@ -65,7 +66,7 @@ class HabitListsController < ApplicationController
   def destroy
     @habit_list.destroy
     redirect_to habit_lists_path
-
+    flash[:alert] = "已成功删除"
   end
 
   private

@@ -14,6 +14,7 @@ class RecordDaysController < ApplicationController
 
     if @record_day.save
       redirect_to @habit_list
+      flash[:notice] = "成功添加 当日记录"
     else
       render :new
     end
@@ -25,6 +26,7 @@ class RecordDaysController < ApplicationController
   def update
     if @record_day.update(record_day_params)
       redirect_to @habit_list
+      flash[:notice] = "修改已上传"
     else
       render :edit
     end
@@ -33,11 +35,13 @@ class RecordDaysController < ApplicationController
   def destroy
     @record_day.destroy
     redirect_to @habit_list
+    flash[:alert] = "删除成功"
   end
 
   def complete
     @record_day.update_attribute(:complete_at, Time.now)
     redirect_to @habit_list
+    flash[:warning] = "你又前进了一步"
   end
 
   private

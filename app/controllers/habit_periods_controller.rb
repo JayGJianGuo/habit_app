@@ -36,6 +36,7 @@ class HabitPeriodsController < ApplicationController
   def update
     if @habit_period.update(habit_period_params)
       redirect_to habit_list_habit_periods_path
+      flash[:notice] = "你的修改已上传"
     else
       render :edit
     end
@@ -44,7 +45,7 @@ class HabitPeriodsController < ApplicationController
   def destroy
     @habit_period.destroy
     redirect_to habit_list_habit_periods_path
-    flash[:notice] = "已删除"
+    flash[:alert] = "已删除"
   end
 
   private

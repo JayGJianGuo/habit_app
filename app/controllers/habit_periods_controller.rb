@@ -21,12 +21,12 @@ class HabitPeriodsController < ApplicationController
 
     if @habit_list.habit_periods.count < 5
       if @habit_period.save
-        redirect_to @habit_list
+        redirect_to habit_list_habit_periods_path
       else
         render :new
       end
     else
-      redirect_to @habit_list
+      flash[:warning] = "不能超过四个规定时期！"
     end
   end
 
@@ -35,10 +35,16 @@ class HabitPeriodsController < ApplicationController
 
   def update
     if @habit_period.update(habit_period_params)
-      redirect_to @habit_list
+      redirect_to habit_list_habit_periods_path
     else
       render :edit
     end
+  end
+
+  def destroy
+    @habit_period.destroy
+    redirect_to habit_list_habit_periods_path
+    flash[:notice] = "已删除"
   end
 
   private

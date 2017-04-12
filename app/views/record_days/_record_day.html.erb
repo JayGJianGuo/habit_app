@@ -4,10 +4,10 @@
         <h1 class="habit_list_title text-center">每日记录</h1>
         <br>
       <div class="col-md-12 col-xs-12">
-        <div class="btn-group pull-right">
-          <%= link_to("正序", habit_list_path(:order => "reverse"), class: "btn btn-info") %>
-          <%= link_to("倒序", habit_list_path, class: "btn btn-default") %>
-          <%= link_to("添加记录", new_habit_list_record_day_path(@habit_list), class: "btn btn-success") %>
+        <div class="pull-right">
+          <%= link_to("正序", habit_list_path(:order => "reverse"), class: "btn btn3d btn-info") %>
+          <%= link_to("倒序", habit_list_path, class: "btn btn3d btn-default") %>
+          <%= link_to("添加记录", new_habit_list_record_day_path(@habit_list), class: "btn btn3d btn-success") %>
         </div>
       </div>
         <br><br>
@@ -28,14 +28,14 @@
               <tr>
                 <td>
                   <% if record_day.complete? %>
-                      <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-on btn btn-success"%>
+                      <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-on btn btn3d btn-success"%>
                 </td>
                 <td>
                   <strike>
                     Day <%= record_day.day_num %>
                   </strike>
                   <% else %>
-                    <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-off btn btn-warning"%>
+                    <%= link_to "", complete_habit_list_record_day_path(@habit_list, record_day), method: :patch, class: "fa fa-toggle-off btn btn3d btn-warning"%>
                 </td>
                 <td>
                   Day <%= record_day.day_num %>
@@ -51,8 +51,8 @@
                 </td>
                 <td>
                   <div class="fa">
-                    <%= link_to "", edit_habit_list_record_day_path(@habit_list, record_day), class: "fa-pencil-square-o btn btn-default"%>
-                    <%= link_to "", habit_list_record_day_path(@habit_list, record_day), method: :delete, class: "fa-trash btn btn-danger", data: { confirm: "你确认删除这条记录吗?" } %>
+                    <%= link_to "", edit_habit_list_record_day_path(@habit_list, record_day), class: "fa-pencil-square-o btn btn3d btn-default"%>
+                    <%= link_to "", habit_list_record_day_path(@habit_list, record_day), method: :delete, class: "fa-trash btn btn3d btn-danger", data: { confirm: "你确认删除这条记录吗?" } %>
                   </div>
                 </td>
               </tr>

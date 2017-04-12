@@ -6,26 +6,34 @@
       </div>
       <div class="row habit_list_sub_title">
         <div class="col-md-12 col-xs-12 text-center">
-          <p class="habit_list_sub_title"><%= habit_list.description %></p>
-        </div>
-        <div class="col-md-12 col-xs-12 text-center">
           <div class="habit_list_category">
             <% c = habit_list.category_id %>
             <% if c == 1 %>
-              <label class="label label-lg label-success"><%= habit_list.category.name %></label>
+              <div class="col-md-6 col-xs-6 col-md-offset-3 col-xs-offset-3">
+                <label type="label" class="btn btn-success ribbon"><%= habit_list.category.name %></label>
+              </div>
             <% elsif c == 2 %>
-              <label class="label label-lg label-info"><%= habit_list.category.name %></label>
+              <div class="col-md-6 col-xs-6 col-md-offset-3 col-xs-offset-3">
+                <label type="label" class="btn btn-info ribbon"><%= habit_list.category.name %></label>
+              </div>
             <% else %>
-              <label class="label label-lg label-danger"><%= habit_list.category.name %></label>
+              <div class="col-md-6 col-xs-6 col-md-offset-3 col-xs-offset-3">
+                <label type="label" class="btn btn-danger ribbon"><%= habit_list.category.name %></label>
+              </div>
             <% end %>
           </div>
         </div>
+
+        <div class="col-md-12 col-xs-12 text-center">
+          <p class="habit_list_sub_title"><%= habit_list.description %></p>
+        </div>
+
       </div>
       <hr>
     <% end %>
   <br>
     <div class="row">
       <div class="last-button text-center" style="width: 100%;">
-        <%= link_to '养成一个新习惯', new_habit_list_path, class: "btn btn-info", style: "width: 80%;" %>
+        <%= link_to '养成一个新习惯', new_habit_list_path, class: "btn btn-info btn3d", style: "width: 80%;" %>
       </div>
     </div>

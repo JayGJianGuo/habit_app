@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap/alert
-//= require bootstrap/dropdown
+//= require bootstrap-sprockets
+//= require select2
 //= require_tree .
 
 /**** dropdown-menu ****/
@@ -29,4 +29,9 @@ $(document).ready(function(){
             $(this).toggleClass('open');
         }
     );
+});
+
+/**** select2 ****/
+$( "#dropdown" ).select2({
+    theme: "bootstrap"
 });

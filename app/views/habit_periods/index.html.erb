@@ -37,7 +37,7 @@
           <td><%= habit_period.period_method %></td>
           <td>
             <%= link_to("编辑", edit_habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-primary") %>
-            <%= link_to("删除", habit_list_habit_period_path(@habit_list, habit_period), method: :delete, class: "btn btn3d btn-danger") %>
+            <%= link_to("删除", habit_list_habit_period_path(@habit_list, habit_period), method: :delete, class: "btn btn3d btn-danger", data: { confirm: "你确定吗？" }) %>
           </td>
         </tr>
       <% end %>

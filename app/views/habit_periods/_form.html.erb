@@ -1,9 +1,7 @@
 <div class="col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2">
   <%= simple_form_for [@habit_list, @habit_period] do |f| %>
-    <%= f.input :period_type_id, label: "习惯时期" do %>
-        <br>
-        <%= f.select :period_type_id, PeriodType.all.map{|c| [c.name,c.id]}, :prompt => "选择类型" %>
-    <% end %>
+
+    <%= f.association :period_type, label: "习惯时期" %>
 
     <%= f.input :period_time, label: "持续时间（单位：天）" %>
     <%= f.input :period_method, label: "阶段性方法" %>
@@ -11,3 +9,8 @@
     <%= f.submit "完成", data: { disable_with: "上传中……" }, class: "btn btn3d btn-primary" %>
   <% end %>
 </div>
+
+
+<script>
+  $("#habit_period_period_type_id").select2();
+</script>

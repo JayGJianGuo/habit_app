@@ -1,11 +1,14 @@
 <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
   <%= simple_form_for(habit_list) do |f| %>
-    <%= f.input :title, label: "习惯名称" %>
-    <%= f.input :description, label: "你想要实现什么？" %>
-
-    <%= f.input :category_id, label: "习惯类型" do %> <br>
-      <%= f.select :category_id, Category.all.map{|c| [c.name,c.id]}, :prompt => "选择类型" %>
-    <% end %>
+    <div class="group">
+      <%= f.input :title, label: "习惯名称" %>
+    </div>
+    <div class="group">
+      <%= f.association :category, label: "习惯类型" %>
+    </div>
+    <div class="group">
+      <%= f.input :description, label: "你想要实现什么？" %>
+    </div>
 
     <br>
     <div class="actions">
@@ -13,3 +16,7 @@
     </div>
   <% end %>
 </div>
+
+<script>
+  $("#habit_list_category_id").select2();
+</script>

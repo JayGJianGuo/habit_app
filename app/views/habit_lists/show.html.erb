@@ -35,7 +35,7 @@
       <br>
       <%= link_to '编辑该习惯养成', edit_habit_list_path(@habit_list), class: "fa-pencil-square-o btn btn3d btn-info" %>
 
-      <%= link_to '删除该习惯养成', habit_lists_path, class: "btn btn3d btn-default fa-home", data: { confirm: "你确认删除“#{@habit_list.title}”吗?" } %>
+      <%= link_to '删除该习惯养成', habit_list_path, class: "btn btn3d btn-default fa-home", method: :delete, data: { confirm: "你确认删除“#{@habit_list.title}”吗?" } %>
 
       <%= link_to "回到首页", habit_lists_path, class: "btn btn3d btn-default pull-right" %>
     </div>

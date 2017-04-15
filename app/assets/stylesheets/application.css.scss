@@ -217,6 +217,27 @@ input[type="submit"] {
 	}
 }
 ::-webkit-input-placeholder { color: $dark; }
+/**** Navbar ****/
+.navbar {
+  width: 100%;
+	background: #C1E1D5;
+	margin: 0.1em auto 0.1em auto;
+  height: inherit;
+	border-radius: 7px;
+	-webkit-box-shadow: 0 0 4px 3px rgba(0,0,0,.3);
+	box-shadow: 0 0 10px 10px rgba(0,0,0,.03);
+}
+
+.navbar-brand {
+  font-size: 1.1em;
+	color: $dark;
+	font-weight: 100;
+  text-decoration: strong;
+}
+
+.flash {
+  margin-top: -1.5em;
+}
 
  /****** LOGIN MODAL ******/
  .loginmodal-container {

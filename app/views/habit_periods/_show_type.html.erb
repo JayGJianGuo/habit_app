@@ -1,0 +1,20 @@
+<div class="period_types" style="width: 100%">
+  <% c = @habit_period.period_type.id %>
+  <% if c == 1 %>
+    <div class="col-md-6 col-xs-6 col-md-offset-3 col-xs-offset-3">
+      <label type="label" class="btn btn-danger ribbon"><%= @habit_period.period_type.name %></label>
+    </div>
+  <% elsif c == 2 %>
+    <div class="col-md-6 col-xs-6 col-md-offset-3 col-xs-offset-3">
+      <label type="label" class="btn btn-warning ribbon"><%= @habit_period.period_type.name %></label>
+    </div>
+  <% elsif c == 3 %>
+    <div class="col-md-6 col-xs-6 col-md-offset-3 col-xs-offset-3">
+      <label type="label" class="btn btn-info ribbon"><%= @habit_period.period_type.name %></label>
+    </div>
+  <% else %>
+    <div class="col-md-6 col-xs-6 col-md-offset-3 col-xs-offset-3">
+      <label type="label" class="btn btn-primary ribbon"><%= @habit_period.period_type.name %></label>
+    </div>
+  <% end %>
+</div>

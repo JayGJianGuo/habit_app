@@ -52,6 +52,17 @@ body {
 	padding: 1em 0;
 }
 
+.sin-box {
+  width: 100%;
+	max-width: 1000px;
+	background: #C1E1D5;
+	margin: 3em auto 0 auto;
+	border-radius: 7px;
+	-webkit-box-shadow: 0 0 4px 3px rgba(0,0,0,.3);
+	box-shadow: 0 0 4px 4px rgba(0,0,0,.03);
+	padding: 1em 0;
+}
+
 .habit_list_title {
 	text-align: center;
 	font-weight: 700;

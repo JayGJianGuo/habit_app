@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="col-md-12 col-xs-12">
+    <div class="group">
+      <%= render "show_type" %>
+    </div>
+  </div>
+  <div class="col-md-12 col-xs-12">
+    <div class="sin-box">
+      <div class="habit_list_sub_title">
+        <strong>本周期持续时间：<%= @habit_period.period_time %></strong>
+        <br>
+        <div class="pull-left">
+          <%= @habit_period.period_type.name %>的对策：
+        </div>
+        <%= simple_format(@habit_period.period_method) %>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

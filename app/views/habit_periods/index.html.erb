@@ -23,13 +23,13 @@
             <div class="period_types" style="width: 100%">
               <% c = habit_period.period_type.id %>
               <% if c == 1 %>
-                <%= link_to habit_period.period_type.name, "", class: "btn btn3d btn-danger", style:"width: 100%" %>
+                <%= link_to habit_period.period_type.name, habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-danger", style:"width: 100%" %>
               <% elsif c == 2 %>
-                <%= link_to habit_period.period_type.name, "", class: "btn btn3d btn-warning", style:"width: 100%" %>
+                <%= link_to habit_period.period_type.name, habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-warning", style:"width: 100%" %>
               <% elsif c == 3 %>
-                <%= link_to habit_period.period_type.name, "", class: "btn btn3d btn-info", style:"width: 100%" %>
+                <%= link_to habit_period.period_type.name, habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-info", style:"width: 100%" %>
               <% else %>
-                <%= link_to habit_period.period_type.name, "", class: "btn btn3d btn-success", style:"width: 100%" %>
+                <%= link_to habit_period.period_type.name, habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-success", style:"width: 100%" %>
               <% end %>
             </div>
           </td>

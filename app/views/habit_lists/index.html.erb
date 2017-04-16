@@ -1,5 +1,5 @@
     <% @habit_lists.each do |habit_list| %>
-      <div class="row col-md-12 col-xs-12">
+      <div class="row col-md-12 col-xs-12" style="margin-top: 1.5em;">
         <h2 class="habit_list_title text-center">
           <%= link_to habit_list.title, habit_list_path(habit_list) %>
         </h2>

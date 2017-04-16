@@ -1,20 +1,28 @@
 <div class="container">
   <div class="col-md-12 col-xs-12">
-    <div class="group">
+    <div class="group col-md-12 col-xs-12">
       <%= render "show_type" %>
     </div>
-  </div>
-  <div class="col-md-12 col-xs-12">
-    <div class="sin-box">
-      <div class="habit_list_sub_title">
-        <strong>本周期持续时间：<%= @habit_period.period_time %></strong>
-        <br>
-        <div class="pull-left">
-          <%= @habit_period.period_type.name %>的对策：
-        </div>
-        <%= simple_format(@habit_period.period_method) %>
-        <br>
-      </div>
+    <div class="pull-right">
+      <%= link_to("编辑", edit_habit_list_habit_period_path(@habit_list, @habit_period), class: "btn btn3d btn-primary") %>
     </div>
   </div>
+  <div class="col-md-12 col-xs-12 sin-box">
+      <div class="habit_list_sub_title">
+        <strong>本周期持续时间：<%= @habit_period.period_time %></strong>
+        <br><br>
+        <div class="col-md-2 col-xs-2">
+          <%= @habit_period.period_type.name %>对策：
+        </div>
+
+        <div class="col-md-10 col-xs-10">
+          <%= simple_format(@habit_period.period_method) %>
+        </div>
+      </div>
+  </div>
+</div>
+<br>
+<div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+  <%= link_to("返回时期列表", habit_list_habit_periods_path(@habit_list), class: "btn btn3d btn-info pull-right" ) %>
+  <%= link_to("返回习惯页", habit_list_path(@habit_list), class: "btn btn3d btn-success pull-right" ) %>
 </div>

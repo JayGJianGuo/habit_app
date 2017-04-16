@@ -1,9 +1,9 @@
 <div class="col-md-12 col-xs-12">
-  <div class="count-day col-md-2 col-xs-2">
-    <button class="btn btn3d btn-default" style="width= 100%;">坚持了 <%= link_to @habit_list.record_days.count, habit_list_habit_periods_path(@habit_list) %> 天</button>
+  <div class="count-day col-md-3 col-xs-3">
+    <%= link_to "坚持了 #{@habit_list.record_days.count} 天", habit_list_habit_periods_path(@habit_list), class: "btn btn3d btn-default", style: "width: 100%;" %>
   </div>
 
-  <div class="period-show col-md-10 col-xs-10">
+  <div class="period-show col-md-6 col-xs-6">
       <% t = 0 %>
       <% d = 0 %>
       <% d = @habit_list.record_days.count %>
@@ -18,19 +18,22 @@
          <!-- 使用不同颜色的 button 来显示不同时期 -->
            <% c = habit_period.period_type.id %>
            <% if c == 1 %>
-             <%= link_to habit_period.period_type.name, habit_list_habit_periods_path(@habit_list), class: "btn btn3d btn-danger", style:"width: 100%" %>
+             <%= link_to habit_period.period_type.name, habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-danger", style:"width: 100%" %>
            <% elsif c == 2 %>
-             <%= link_to habit_period.period_type.name, habit_list_habit_periods_path(@habit_list), class: "btn btn3d btn-warning", style:"width: 100%" %>
+             <%= link_to habit_period.period_type.name, habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-warning", style:"width: 100%" %>
            <% elsif c == 3 %>
-             <%= link_to habit_period.period_type.name, habit_list_habit_periods_path(@habit_list), class: "btn btn3d btn-info", style:"width: 100%" %>
+             <%= link_to habit_period.period_type.name, habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-info", style:"width: 100%" %>
            <% else %>
-             <%= link_to habit_period.period_type.name, habit_list_habit_periods_path(@habit_list), class: "btn btn3d btn-success", style:"width: 100%" %>
+             <%= link_to habit_period.period_type.name, habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-primary", style:"width: 100%" %>
            <% end %>
+  </div>
+  <div class="col-md-3 col-xs-3">
+    <%= link_to "习惯时期", habit_list_habit_periods_path(@habit_list), class: "btn btn3d btn-info", style: "width: 100%;" %>
   </div>
   <div class="col-md-12 col-xs-12">
     <div class="container" style="margin-top: 1.0em;">
-      <div class="habit_period_show">
-        对应方法： <%= habit_period.period_method %>
+      <div class="habit_period_show text-center habit_list_sub_title">
+        <strong>对应方法： </strong><%= habit_period.period_method %>
       </div>
     </div>
   </div>

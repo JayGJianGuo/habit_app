@@ -1,3 +1,6 @@
+<div class="habit_list_title">
+  <h2>习惯周期列表</h2>
+</div>
 <% if @habit_list.habit_periods.count < 4 %>
 <div class="row">
   <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1 fa">
@@ -11,9 +14,8 @@
     <thead>
       <tr>
         <th class="col-md-4 col-xs-4 fa fa-clock-o text-center">  时期</th>
-        <th class="col-md-2 col-xs-2 fa fa-calendar text-center">  天数</th>
-        <th class="col-md-2 col-xs-2 fa fa-key text-center">  方法</th>
-        <th class="col-md-2 col-xs-2 fa fa-calender text-center">操作</th>
+        <th class="col-md-3 col-xs-3 fa fa-calendar text-center">  天数</th>
+        <th class="col-md-3 col-xs-3 fa fa-calender text-center">操作</th>
       </tr>
     </thead>
     <tbody>
@@ -29,12 +31,11 @@
               <% elsif c == 3 %>
                 <%= link_to habit_period.period_type.name, habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-info", style:"width: 100%" %>
               <% else %>
-                <%= link_to habit_period.period_type.name, habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-success", style:"width: 100%" %>
+                <%= link_to habit_period.period_type.name, habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-primary", style:"width: 100%" %>
               <% end %>
             </div>
           </td>
           <td><%= habit_period.period_time %> days</td>
-          <td><%= habit_period.period_method %></td>
           <td>
             <%= link_to("编辑", edit_habit_list_habit_period_path(@habit_list, habit_period), class: "btn btn3d btn-primary") %>
             <%= link_to("删除", habit_list_habit_period_path(@habit_list, habit_period), method: :delete, class: "btn btn3d btn-danger", data: { confirm: "你确定吗？" }) %>

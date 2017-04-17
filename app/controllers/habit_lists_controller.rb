@@ -39,7 +39,7 @@ class HabitListsController < ApplicationController
   # POST /habit_lists.json
   def create
     @habit_list = HabitList.new(habit_list_params)
-
+    @habit_list.user = current_user
     @category_id = params[:category_id]
 
       if @habit_list.save

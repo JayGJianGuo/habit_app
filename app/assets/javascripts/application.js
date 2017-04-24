@@ -17,10 +17,6 @@
 //= require select2
 //= require_tree .
 
-<%= content_for :handwrite_javascript do %>
-
-<% end %>
-
 /**** dropdown-menu ****/
 $(document).ready(function(){
     $(".dropdown").hover(

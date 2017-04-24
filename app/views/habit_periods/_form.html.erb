@@ -1,3 +1,9 @@
+<%= content_for :handwrite_javascript do %>
+  <script>
+    $("#habit_period_period_type_id").select2();
+  </script>
+<% end %>
+
 <div class="col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2">
   <%= simple_form_for [@habit_list, @habit_period] do |f| %>
 
@@ -9,8 +15,3 @@
     <%= f.submit "完成", data: { disable_with: "上传中……" }, class: "btn btn3d btn-primary" %>
   <% end %>
 </div>
-
-
-<script>
-  $("#habit_period_period_type_id").select2();
-</script>

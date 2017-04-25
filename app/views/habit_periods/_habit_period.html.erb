@@ -1,6 +1,6 @@
 <div class="col-md-12 col-xs-12">
   <div class="count-day col-md-3 col-xs-3">
-    <%= link_to "坚持了 #{@habit_list.record_days.count} 天", habit_list_habit_periods_path(@habit_list), class: "btn btn3d btn-default", style: "width: 100%;" %>
+    <%= link_to "坚持了 #{@habit_list.record_days.count} 天", habit_list_record_days_path(@habit_list), class: "btn btn3d btn-default", style: "width: 100%;" %>
   </div>
 
   <div class="period-show col-md-6 col-xs-6">
@@ -8,7 +8,9 @@
       <% d = 0 %>
       <% d = @habit_list.record_days.count %>
       <% if d < 1 %>
-        <%= link_to "添加习惯养成时期", new_habit_list_habit_period_path(@habit_list), class: "btn btn3d btn-info pull-right", style: "width: 100%" %>
+        <% if current_user == @habit_list.user %>
+          <%= link_to "添加习惯养成时期", new_habit_list_habit_period_path(@habit_list), class: "btn btn3d btn-info pull-right", style: "width: 100%" %>
+        <% end %>
       <% end %>
      <% @habit_periods.each do |habit_period| %>
        <% t += habit_period.period_time %>

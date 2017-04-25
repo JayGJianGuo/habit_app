@@ -4,7 +4,10 @@
       <%= render "show_type" %>
     </div>
     <div class="pull-right">
-      <%= link_to("编辑", edit_habit_list_habit_period_path(@habit_list, @habit_period), class: "btn btn3d btn-primary") %>
+      <% if current_user == @habit_list.user %>
+        <%= link_to("编辑", edit_habit_list_habit_period_path(@habit_list, @habit_period), class: "btn btn3d btn-primary") %>
+        <%= link_to("删除", habit_list_habit_period_path(@habit_list, @habit_period), method: :delete, class: "btn btn3d btn-danger") %>
+      <% end %>
     </div>
   </div>
   <div class="col-md-12 col-xs-12 sin-box">

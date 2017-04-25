@@ -1,12 +1,12 @@
+<div class="container">
   <div class="record_days">
     <div class="col-md-12 col-xs-12">
-      <div class="col-md-12 col-xs-12"><hr></div>
         <h1 class="habit_list_title text-center">每日记录</h1>
         <br>
       <div class="col-md-12 col-xs-12">
         <div class="pull-right">
-          <%= link_to("正序", habit_list_path(:order => "reverse"), class: "btn btn3d btn-info") %>
-          <%= link_to("倒序", habit_list_path, class: "btn btn3d btn-default") %>
+          <%#= link_to("正序", record_days_path(:order => "reverse"), class: "btn btn3d btn-info") %>
+          <%#= link_to("倒序", record_day_path, class: "btn btn3d btn-default") %>
           <% if current_user == @habit_list.user %>
             <%= link_to("添加记录", new_habit_list_record_day_path(@habit_list), class: "btn btn3d btn-success") %>
           <% end %>
@@ -76,4 +76,8 @@
       </div>
     </div>
   </div>
+</div>
+<br>
+<div class=" col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+  <%= link_to "返回上级", habit_list_path(@habit_list), class: "btn btn3d btn-default pull-right" %>
 </div>

@@ -1,7 +1,18 @@
 class RecordDaysController < ApplicationController
   before_action :authenticate_user!
   before_action :set_habit_list
-  before_action :find_record_day, except: [:new, :create]
+  before_action :find_record_day, except: [:index, :new, :create]
+
+  def index
+    @record_days = RecordDay.all.order("day_num DESC")
+
+    @record_days = case params[:order]
+      when 'reverse'
+        @record_days.order("day_num DESC").reverse
+      else
+        @record_days.order("day_num DESC")
+      end
+  end
 
   def new
     @record_day = RecordDay.new

@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
     resources :habit_periods
   end
-  root "habit_lists#index"
+  root "welcome#index"
 
 end

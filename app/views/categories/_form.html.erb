@@ -1,0 +1,8 @@
+<%= simple_form_for @category do |f| %>
+<div class="day-input col-xs-12">
+  <%= f.input :name, label: "名称" %>
+</div>
+<div class="col-xs-12">
+  <%= f.submit "完成", data: { disable_with: "上传中……" }, class: "btn btn3d btn-primary"  %>
+</div>
+<% end %>

@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
     resources :habit_periods
   end
-  root "welcome#index"
+  root "posts#index"
 
-  resources :categories 
+  resources :categories
+
+  resources :posts
 end
